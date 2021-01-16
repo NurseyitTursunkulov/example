@@ -42,8 +42,8 @@ fun Application.module(testing: Boolean = false) {
         }
     }
 
-    DatabaseFactory.init()
-    val db = TodoRepository()
+//    DatabaseFactory.init()
+    val db = com.example.aigul.repository.NewRepository
     val jwtService = JwtService()
     val hashFunction = { s: String -> hash(s) }
 

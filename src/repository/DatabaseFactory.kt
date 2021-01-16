@@ -39,6 +39,7 @@ import kotlinx.coroutines.withContext
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
+import java.net.URI
 
 object DatabaseFactory {
 
@@ -67,6 +68,19 @@ object DatabaseFactory {
             config.password = password
         }
         config.validate()
+
+
+//        val dburi = URI(System.getenv("JDBC_DRIVER"))
+//        val userName = dburi.userInfo.split(":").toTypedArray()[0]
+//        val password = dburi.userInfo.split(":").toTypedArray()[0]
+//        val dburl = "jdbc:postgresql://"+dburi.host + ":" +
+//                dburi.port + dburi.path+"?.sslmode=require" +
+//                "&user=$userName&password=$password"
+//        config.jdbcUrl = dburl
+//        config.maximumPoolSize = 3
+//        config.isAutoCommit = false
+//        config.transactionIsolation =  "TRANSACTION_REPEATABLE_READ"
+//        config.validate()
         return HikariDataSource(config)
     }
 
